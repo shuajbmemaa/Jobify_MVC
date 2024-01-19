@@ -2,47 +2,36 @@
 using Jobify.DataAccess.Repository.IRepository;
 using Jobify.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Collections.Generic;
 
 namespace JobApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class PunaController : Controller
+    public class PunetController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public PunaController(IUnitOfWork unitOfWork)
+        public PunetController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Puna> objPunaList = _unitOfWork.Puna.GetAll().ToList();
-             
-            return View(objPunaList);
+            List<Punet> objPunetList = _unitOfWork.Punet.GetAll().ToList();
+            return View(objPunetList);
         }
 
         public IActionResult Create()
         {
-            //IEnumerable<SelectListItem> CategoryList = _unitOfWork.Category.
-            //    GetAll().Select(u => new SelectListItem
-            //    {
-            //        Text = u.Name,
-            //        Value = u.Id.ToString()
-            //    });
-
-            //ViewBag.CategoryList = CategoryList;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Edit(Puna obj)
+        public IActionResult Edit(Punet obj)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Puna.Update(obj);
+                _unitOfWork.Punet.Update(obj);
                 _unitOfWork.Save();
-                TempData["success"] = "Puna u perditesua me sukses";
+                TempData["success"] = "Kateogria u perditesua me sukses";
                 return RedirectToAction("Index");
             }
             return View();
@@ -53,24 +42,24 @@ namespace JobApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Puna? punaFromDb = _unitOfWork.Puna.Get(u => u.Id == id);
-            //Puna? punaFromDb2=_db.Puna.Where(u=>u.Id==id).FirstOrDefault();
-            if (punaFromDb == null)
+            Punet? punetFromDb = _unitOfWork.Punet.Get(u => u.Id == id);
+            //Punet? punetFromDb2=_db.Categories.Where(u=>u.Id==id).FirstOrDefault();
+            if (punetFromDb == null)
             {
                 return NotFound();
             }
-            return View(punaFromDb);
+            return View(punetFromDb);
         }
 
         [HttpPost]
-        public IActionResult Create(Puna obj)
+        public IActionResult Create(Punet obj)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Puna.Add(obj);
+                _unitOfWork.Punet.Add(obj);
                 _unitOfWork.Save();
-                TempData["success"] = "Puna u krijua me sukses";
-                return RedirectToAction("Index", "Category");
+                TempData["success"] = "Kateogria u krijua me sukses";
+                return RedirectToAction("Index", "Punet");
             }
             return View();
         }
@@ -78,14 +67,14 @@ namespace JobApp.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Puna? obj = _unitOfWork.Puna.Get(u => u.Id == id);
+            Punet? obj = _unitOfWork.Punet.Get(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _unitOfWork.Puna.Delete(obj);
+            _unitOfWork.Punet.Delete(obj);
             _unitOfWork.Save();
-            TempData["success"] = "Puna u fshie me sukses";
+            TempData["success"] = "Kateogria u fshie me sukses";
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int? id)
@@ -94,12 +83,12 @@ namespace JobApp.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            Puna? punaFromDb = _unitOfWork.Puna.Get(u => u.Id == id);
-            if (punaFromDb == null)
+            Punet? punetFromDb = _unitOfWork.Punet.Get(u => u.Id == id);
+            if (punetFromDb == null)
             {
                 return NotFound();
             }
-            return View(punaFromDb);
+            return View(punetFromDb);
         }
     }
 }
