@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jobify.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240110210828_addProductsToDb")]
-    partial class addProductsToDb
+    [Migration("20240119143806_addPunaToDb")]
+    partial class addPunaToDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,7 +65,7 @@ namespace Jobify.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Jobify.Models.Product", b =>
+            modelBuilder.Entity("Jobify.Models.Punet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,55 +73,7 @@ namespace Jobify.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Emri_Pozites")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Kerkesat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Pershkrimi")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            EmriPozites = "siu",
-                            Kerkesat = "sssa",
-                            Pershkrimi = "ssss"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            EmriPozites = "siau",
-                            Kerkesat = "sss2a",
-                            Pershkrimi = "sssfs"
-                        });
-                });
-
-            modelBuilder.Entity("Jobify.Models.Puna", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Emri_Pozites")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -133,10 +85,9 @@ namespace Jobify.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Pershkrimi")
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -146,38 +97,26 @@ namespace Jobify.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            EmriPozites = "Full-Stack",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat1",
+                            Description = "Fullstack",
+                            Kerkesat = "Shume",
                             Lokacioni = "Prishtine",
-                            Pershkrimi = "edhe back edhe front"
+                            Name = "Full-Stack"
                         },
                         new
                         {
                             Id = 2,
-                            EmriPozites = "Administrata Nate",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat2",
+                            Description = "bakcend",
+                            Kerkesat = "Kogja",
                             Lokacioni = "Prishtine",
-                            Pershkrimi = "edhessss edhe front"
+                            Name = "Backend"
                         },
                         new
                         {
                             Id = 3,
-                            EmriPozites = "Frontend",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat3",
-                            Lokacioni = "Vushtrri",
-                            Pershkrimi = "eddhe front"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmriPozites = "Backend",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat31",
+                            Description = "devops",
+                            Kerkesat = "Pak",
                             Lokacioni = "Prishtine",
-                            Pershkrimi = "edhe back "
+                            Name = "DevOps"
                         });
                 });
 #pragma warning restore 612, 618

@@ -62,7 +62,7 @@ namespace Jobify.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Jobify.Models.Product", b =>
+            modelBuilder.Entity("Jobify.Models.Punet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,62 +70,7 @@ namespace Jobify.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Kerkesat")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Pershkrimi")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("PunaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PunaId");
-
-                    b.ToTable("Products");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Kerkesat = "sssa",
-                            Name = "siu",
-                            Pershkrimi = "ssss",
-                            PunaId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Kerkesat = "sss2a",
-                            Name = "siau",
-                            Pershkrimi = "sssfs",
-                            PunaId = 1
-                        });
-                });
-
-            modelBuilder.Entity("Jobify.Models.Puna", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Emri_Pozites")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -137,10 +82,13 @@ namespace Jobify.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Pershkrimi")
+                    b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("kategoria")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -150,50 +98,30 @@ namespace Jobify.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            EmriPozites = "Full-Stack",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat1",
-                            Lokacioni = "Prishtine",
-                            Pershkrimi = "edhe back edhe front"
+                            Description = "Përshkrimi 1",
+                            Kerkesat = "Kërkesat 1",
+                            Lokacioni = "Lokacioni 1",
+                            Name = "Punë 1",
+                            kategoria = "Administrate"
                         },
                         new
                         {
                             Id = 2,
-                            EmriPozites = "Administrata Nate",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat2",
-                            Lokacioni = "Prishtine",
-                            Pershkrimi = "edhessss edhe front"
+                            Description = "Përshkrimi 2",
+                            Kerkesat = "Kërkesat 2",
+                            Lokacioni = "Lokacioni 2",
+                            Name = "Punë 2",
+                            kategoria = "Teknologji"
                         },
                         new
                         {
                             Id = 3,
-                            EmriPozites = "Frontend",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat3",
-                            Lokacioni = "Vushtrri",
-                            Pershkrimi = "eddhe front"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            EmriPozites = "Backend",
-                            ImageUrl = "",
-                            Kerkesat = "Kerkesat31",
-                            Lokacioni = "Prishtine",
-                            Pershkrimi = "edhe back "
+                            Description = "Përshkrimi 3",
+                            Kerkesat = "Kërkesat 3",
+                            Lokacioni = "Lokacioni 3",
+                            Name = "Punë 3",
+                            kategoria = "Biznis"
                         });
-                });
-
-            modelBuilder.Entity("Jobify.Models.Product", b =>
-                {
-                    b.HasOne("Jobify.Models.Puna", "Puna")
-                        .WithMany()
-                        .HasForeignKey("PunaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Puna");
                 });
 #pragma warning restore 612, 618
         }

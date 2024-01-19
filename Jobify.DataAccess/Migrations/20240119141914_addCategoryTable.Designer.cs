@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Jobify.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240104153341_AddCategoryToDbAndSeedTable")]
-    partial class AddCategoryToDbAndSeedTable
+    [Migration("20240119141914_addCategoryTable")]
+    partial class addCategoryTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

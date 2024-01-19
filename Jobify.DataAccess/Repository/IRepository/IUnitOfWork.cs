@@ -9,9 +9,7 @@ namespace Jobify.DataAccess.Repository.IRepository
     public  interface IUnitOfWork
     {
         ICategoryRepository Category { get; }
-        IPunaRepository Puna { get; }
-
-        IProductRepository Product { get; }
+        IPunetRepository Punet { get; }
 
         void Save();
     }

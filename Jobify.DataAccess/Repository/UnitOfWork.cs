@@ -12,15 +12,13 @@ namespace Jobify.DataAccess.Repository
     {
         private ApplicationDbContext _db;
         public ICategoryRepository Category { get; private set; }
-        public IPunaRepository Puna { get; private set; }
-
-        public IProductRepository Product { get; private set; }
+        public IPunetRepository Punet { get; private set; }
+        
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
-            Puna = new PunaRepository(_db);
-            Product = new ProductRepository(_db);
+            Punet = new PunetRepository(_db);
         }
         
 

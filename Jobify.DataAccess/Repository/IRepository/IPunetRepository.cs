@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Jobify.DataAccess.Repository.IRepository
 {
-    public interface IPunaRepository: IRepository<Puna>
+    public interface IPunetRepository: IRepository<Punet>
     {
-        void Update(Puna punet);
+        void Update(Punet obj);
         
     }
 }

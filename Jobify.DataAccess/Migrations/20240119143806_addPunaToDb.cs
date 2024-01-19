@@ -18,8 +18,8 @@ namespace Jobify.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmriPozites = table.Column<string>(name: "Emri_Pozites", type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Pershkrimi = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Kerkesat = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lokacioni = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -30,13 +30,12 @@ namespace Jobify.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Punet",
-                columns: new[] { "Id", "Emri_Pozites", "Kerkesat", "Lokacioni", "Pershkrimi" },
+                columns: new[] { "Id", "Description", "Kerkesat", "Lokacioni", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Full-Stack", "Kerkesat1", "Prishtine", "edhe back edhe front" },
-                    { 2, "Administrata Nate", "Kerkesat2", "Prishtine", "edhessss edhe front" },
-                    { 3, "Frontend", "Kerkesat3", "Vushtrri", "eddhe front" },
-                    { 4, "Backend", "Kerkesat31", "Prishtine", "edhe back " }
+                    { 1, "Fullstack", "Shume", "Prishtine", "Full-Stack" },
+                    { 2, "bakcend", "Kogja", "Prishtine", "Backend" },
+                    { 3, "devops", "Pak", "Prishtine", "DevOps" }
                 });
         }
 

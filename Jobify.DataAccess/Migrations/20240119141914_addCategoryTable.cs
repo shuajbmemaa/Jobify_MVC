@@ -7,7 +7,7 @@
 namespace Jobify.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddCategoryToDbAndSeedTable : Migration
+    public partial class addCategoryTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

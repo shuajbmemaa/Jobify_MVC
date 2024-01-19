@@ -10,17 +10,20 @@ using System.Threading.Tasks;
 
 namespace Jobify.DataAccess.Repository
 {
-    public class ProductRepository :Repository<Product>, IProductRepository
+    public class PunetRepository :Repository<Punet>, IPunetRepository
     {
         private ApplicationDbContext _db;
-        public ProductRepository(ApplicationDbContext db) : base(db)
+        public PunetRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
-        public void Update(Product obj)
+
+        public void Update(Punet obj)
         {
-            _db.Products.Update(obj);
+            _db.Punet.Update(obj);
         }
+
+       
     }
 }
