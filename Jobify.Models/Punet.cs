@@ -23,5 +23,7 @@ namespace Jobify.Models
         public string Lokacioni { get; set; }
 
         public string kategoria { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }
