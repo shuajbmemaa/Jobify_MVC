@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Punekerkuesi\Views\NewFolder1\" />
     <Folder Include="wwwroot\images\product\" />
   </ItemGroup>
 
