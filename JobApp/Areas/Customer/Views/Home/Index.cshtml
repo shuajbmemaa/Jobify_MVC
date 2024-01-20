@@ -1,7 +1,28 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<Punet>
 
-<div class="text-center">
-    <h1 class="display-4">Miresevini ! </h1>
+<div class="row pb-3">
+    @foreach(var punet in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded">
+                        <img src="@punet.ImageUrl" class="card-img-top rounded"/>
+                        <div class="pl-1">
+                            <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@punet.Name</p>
+                            <p class="card-title text-warning text-center">Kategoria: <b>@punet.kategoria</b></p>
+                        </div>
+                        <div class="pl-1">
+                            <p class="text-dark text-opacity-75 text-center">@punet.Lokacioni</p>
+                        </div>
+                        <div>
+                            <a asp-action="Details" asp-route-id="@punet.Id" class="btn btn-primary bg-gradient border-0 form-control">Detajet</a>
+                        </div>
+                        </div>
+                    
+                     </div>
+                     
+            </div>
+            </div>
+    }
 </div>
