@@ -20,6 +20,7 @@
         <th>Kerkesat</th>
         <th>Lokacioni</th>
         <th>Kategoria</th>
+        <th>ImageUrl</th>
 
     </tr>
     </thead>
@@ -32,6 +33,7 @@
                 <td>@obj.Kerkesat</td>
                 <td>@obj.Lokacioni</td>
                 <td>@obj.kategoria</td>
+                <td>@obj.ImageUrl</td>
                 <td>
                     <div class="w-75 btn-group" role="group">
                         <a asp-controller="Punet" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
