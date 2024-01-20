@@ -62,13 +62,13 @@ namespace JobApp.Areas.Admin.Controllers
                 if(file != null)
                 {
                     string fileName=Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string punetPath=Path.Combine(wwwRootPath, @"images\punet");
+                    string punetPath=Path.Combine(wwwRootPath, @"images\fotot");
 
                     using (var fileStream = new FileStream(Path.Combine(punetPath, fileName),FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
-                    obj.ImageUrl = @"\images\punet\" + fileName;
+                    obj.ImageUrl = @"\images\fotot\" + fileName;
                     Console.WriteLine($"ImageUrl: {obj.ImageUrl}");
 
                 }
