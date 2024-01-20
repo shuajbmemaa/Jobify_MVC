@@ -9,9 +9,11 @@ namespace JobApp.Areas.Admin.Controllers
     public class PunetController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public PunetController(IUnitOfWork unitOfWork)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public PunetController(IUnitOfWork unitOfWork,IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Index()
         {
@@ -52,13 +54,27 @@ namespace JobApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Punet obj)
+        public IActionResult Create(Punet obj,IFormFile? file)
         {
             if (ModelState.IsValid)
             {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if(file != null)
+                {
+                    string fileName=Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string punetPath=Path.Combine(wwwRootPath, @"images\punet");
+
+                    using (var fileStream = new FileStream(Path.Combine(punetPath, fileName),FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+                    obj.ImageUrl = @"\images\punet\" + fileName;
+                    Console.WriteLine($"ImageUrl: {obj.ImageUrl}");
+
+                }
                 _unitOfWork.Punet.Add(obj);
                 _unitOfWork.Save();
-                TempData["success"] = "Kateogria u krijua me sukses";
+                TempData["success"] = "Puna u krijua me sukses";
                 return RedirectToAction("Index", "Punet");
             }
             return View();
