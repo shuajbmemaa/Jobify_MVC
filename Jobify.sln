@@ -5,11 +5,11 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JobApp", "JobApp\JobApp.csproj", "{C9D9EE1F-697D-459C-BE79-52BE7FC33C1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobify.DataAccess", "Jobify.DataAccess\Jobify.DataAccess.csproj", "{A521F465-D1DA-4CAB-9267-DDB7AD7C8E00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobify.DataAccess", "Jobify.DataAccess\Jobify.DataAccess.csproj", "{A521F465-D1DA-4CAB-9267-DDB7AD7C8E00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobify.Models", "Jobify.Models\Jobify.Models.csproj", "{6E1D87A2-99AE-422E-A67E-F7FE77932F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobify.Models", "Jobify.Models\Jobify.Models.csproj", "{6E1D87A2-99AE-422E-A67E-F7FE77932F01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jobify.Utility", "Jobify.Utility\Jobify.Utility.csproj", "{EA05058F-6817-4CF1-8264-A5C7F74BEACA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jobify.Utility", "Jobify.Utility\Jobify.Utility.csproj", "{EA05058F-6817-4CF1-8264-A5C7F74BEACA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
