@@ -1,4 +1,4 @@
-﻿@model Punet
+﻿@model JobApp.Areas.Admin.Models.Punet
 
 <form method="post" enctype="multipart/form-data">
     <div class="border p-3 mt-4">
@@ -33,9 +33,11 @@
         </div>
 
         <div class="mb-3 p-1">
-            <label asp-for="ImageUrl" class="p-0"></label>
-            <input type="file" name="file" class="form-control" />
+            <label asp-for="ImageFile" class="p-0"></label>
+            <input asp-for="ImageFile" type="file"  name="file"  class="form-control" />
+           @* <span asp-validation-for="ImageFile" class="text-danger"></span> *@
         </div>
+
         <div class="row">
             <div class="col-6">
                 <button type="submit" class="btn btn-primary form-control" >Krijo</button>
