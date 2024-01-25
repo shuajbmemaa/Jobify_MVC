@@ -4,13 +4,16 @@ using Jobify.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using JobApp.Areas.Identity.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims; //
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options => 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var connectionString = builder.Configuration.GetConnectionString("JobAppContextConnection") ?? throw new InvalidOperationException("Connection string 'JobAppContextConnection' not found.");
@@ -18,11 +21,25 @@ var connectionString = builder.Configuration.GetConnectionString("JobAppContextC
 builder.Services.AddDbContext<JobAppContext>(options => options.UseSqlServer(connectionString));
 
 
+var config = builder.Configuration;
+builder.Services.AddAuthentication()
+   .AddGoogle(options =>
+   {
+       IConfigurationSection googleAuthNSection =
+       config.GetSection("Authentication:Google");
+       options.ClientId = googleAuthNSection["ClientId"];
+       // options.RetrieveUserDetails = true;
+       options.ClientSecret = googleAuthNSection["ClientSecret"];
+
+   });
+
+
+
 builder.Services.AddDefaultIdentity<JobAppUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<JobAppContext>();
 
-builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
@@ -88,5 +105,4 @@ using (var scope = app.Services.CreateScope())
 
 
 }
-
 app.Run();
