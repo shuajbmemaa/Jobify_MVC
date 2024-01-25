@@ -1,10 +1,12 @@
 ﻿using Jobify.DataAccess.Data;
 using Jobify.DataAccess.Repository.IRepository;
 using Jobify.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp.Areas.Admin.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class PunetController : Controller
     {

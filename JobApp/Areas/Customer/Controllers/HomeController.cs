@@ -1,11 +1,13 @@
 ﻿using Jobify.DataAccess.Repository.IRepository;
 using Jobify.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace JobApp.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    //[Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
