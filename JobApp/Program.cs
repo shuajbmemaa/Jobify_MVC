@@ -61,6 +61,8 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+
+//Krijimi lokal i adminit
 using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<JobAppUser>>();
@@ -77,7 +79,7 @@ using (var scope = app.Services.CreateScope())
         user.Email = email;
         user.FirstName = firstName;
         user.LastName = lastName;
-        user.EmailConfirmed = true;
+        user.EmailConfirmed = true;  //e kemi vendosur per arsye te mos kerkimit te konfirmimit te email
 
         await userManager.CreateAsync(user, password);
 
