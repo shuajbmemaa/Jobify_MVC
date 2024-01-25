@@ -47,6 +47,8 @@ app.MapControllerRoute(
 
 app.MapRazorPages();
 
+
+//Krijimi i tri roleve perkatese per authorization
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
