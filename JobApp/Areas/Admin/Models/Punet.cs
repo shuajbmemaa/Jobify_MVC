@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Http;
 
-namespace Jobify.Models
+namespace JobApp.Areas.Admin.Models
 {
     public class Punet
     {
@@ -25,6 +25,6 @@ namespace Jobify.Models
 
         public string kategoria { get; set; }
 
-        public string ImageUrl { get; set; }
+        public IFormFile ImageFile { get; set; }
     }
 }

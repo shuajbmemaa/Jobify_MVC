@@ -56,25 +56,35 @@ namespace JobApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Punet obj,IFormFile? file)
+        public IActionResult Create(JobApp.Areas.Admin.Models.Punet obj, IFormFile file)
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath = _webHostEnvironment.WebRootPath;
-                if(file != null)
+                var punet = new Punet()
                 {
-                    string fileName=Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string punetPath=Path.Combine(wwwRootPath, @"images\fotot");
+                    Id = obj.Id,
+                    Name = obj.Name,
+                    Description = obj.Description,
+                    Kerkesat = obj.Kerkesat,
+                    Lokacioni = obj.Lokacioni,
+                    kategoria = obj.kategoria
+                };
 
-                    using (var fileStream = new FileStream(Path.Combine(punetPath, fileName),FileMode.Create))
+                if (file != null && file.Length > 0)
+                {
+                    var uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                    var filePath = Path.Combine("wwwroot/images", uniqueFileName);
+
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
-                    obj.ImageUrl = @"\images\fotot\" + fileName;
-                    Console.WriteLine($"ImageUrl: {obj.ImageUrl}");
 
+                    punet.ImageUrl = uniqueFileName;
                 }
-                _unitOfWork.Punet.Add(obj);
+               
+
+                _unitOfWork.Punet.Add(punet);
                 _unitOfWork.Save();
                 TempData["success"] = "Puna u krijua me sukses";
                 return RedirectToAction("Index", "Punet");
