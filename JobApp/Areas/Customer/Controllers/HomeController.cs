@@ -7,7 +7,8 @@ using System.Diagnostics;
 namespace JobApp.Areas.Customer.Controllers
 {
     [Area("Customer")]
-    //[Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin, Punedhenesi, Punekerkuesi")]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
