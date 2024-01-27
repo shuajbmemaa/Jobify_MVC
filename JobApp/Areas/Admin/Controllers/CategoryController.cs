@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace JobApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Punedhenesi")]
+    [Authorize(Roles = "Punedhenesi, Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
