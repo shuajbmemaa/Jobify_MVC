@@ -35,7 +35,7 @@ namespace JobApp.Areas.Admin.Controllers
             {
                 _unitOfWork.Punet.Update(obj);
                 _unitOfWork.Save();
-                TempData["success"] = "Kateogria u perditesua me sukses";
+                TempData["success"] = "Puna u perditesua me sukses";
                 return RedirectToAction("Index");
             }
             return View();
@@ -102,7 +102,7 @@ namespace JobApp.Areas.Admin.Controllers
             }
             _unitOfWork.Punet.Delete(obj);
             _unitOfWork.Save();
-            TempData["success"] = "Kateogria u fshie me sukses";
+            TempData["success"] = "Puna u fshie me sukses";
             return RedirectToAction("Index");
         }
         public IActionResult Delete(int? id)
