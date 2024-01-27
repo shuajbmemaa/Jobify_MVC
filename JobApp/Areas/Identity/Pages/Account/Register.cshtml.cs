@@ -146,6 +146,22 @@ namespace JobApp.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
           
+                    // Assign roles to user upon registration
+                    var selectedRoles = Input.SelectedRoles; // Retrieve selected roles from data
+                    foreach (var roleName in selectedRoles)
+                    {
+                        var roleResult = await _userManager.AddToRoleAsync(user, roleName);
+                        if (!roleResult.Succeeded)
+                        {
+                            foreach (var error in roleResult.Errors)
+                            {
+                                ModelState.AddModelError(string.Empty, error.Description);
+                            }
+                            return Page();
+                        }
+                    }
+
+
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
