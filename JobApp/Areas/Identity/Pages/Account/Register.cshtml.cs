@@ -116,6 +116,8 @@ namespace JobApp.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
+
+
             [Required(ErrorMessage = "Please select a role")]
             [Display(Name = "Selected Role")]
             public string SelectedRoles { get; set; }
