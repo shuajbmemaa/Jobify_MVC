@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JobApp.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Punedhenesi")]
+    [Authorize(Roles = "Punedhenesi, Admin")]
     [Area("Admin")]
     public class PunetController : Controller
     {
