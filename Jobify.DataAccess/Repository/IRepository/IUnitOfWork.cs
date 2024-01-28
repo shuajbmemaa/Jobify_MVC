@@ -11,6 +11,8 @@ namespace Jobify.DataAccess.Repository.IRepository
         ICategoryRepository Category { get; }
         IPunetRepository Punet { get; }
 
+        IAplikimiRepository Aplikimi { get; }
+
         void Save();
     }
 }
