@@ -74,6 +74,9 @@ namespace JobApp.Areas.Identity.Pages.Account
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
+        //public List<string> SelectedRoles { get; set; }
+
+
         public class InputModel
         {
 			[Required]
@@ -112,6 +115,12 @@ namespace JobApp.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+
+
+            [Required(ErrorMessage = "Please select a role")]
+            [Display(Name = "Selected Role")]
+            public string SelectedRoles { get; set; }
         }
 
 
@@ -139,6 +148,33 @@ namespace JobApp.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    // Assign roles to user upon registration
+                    /*var selectedRoles = Input.SelectedRoles; // Retrieve selected roles from data
+                    foreach (var roleName in selectedRoles)
+                    {
+                        var roleResult = await _userManager.AddToRoleAsync(user, roleName);
+                        if (!roleResult.Succeeded)
+                        {
+                            foreach (var error in roleResult.Errors)
+                            {
+                                ModelState.AddModelError(string.Empty, error.Description);
+                            }
+                            return Page();
+                        }
+                    }*/
+                    // Assign selected role
+                    var roleName = Input.SelectedRoles;
+                    var roleResult = await _userManager.AddToRoleAsync(user, roleName);
+                    if (!roleResult.Succeeded)
+                    {
+                        foreach (var error in roleResult.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        return Page();
+                    }
+
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -26,23 +26,27 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>                      
+                            </li>
+                        @if (User.IsInRole("Punedhenesi"))
+                        {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    PuneDhenesi Dashboard
+                                Punëdhënësi Dashboard
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
                                         <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Categories</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Punet" asp-action="Index">Punet</a>
+                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Punet" asp-action="Index">Punët</a>
                                     </li>
                                     <li><hr class="dropdown-divider"></li>
 
                                 </ul>
                             </li>
-
+                        }
+                        @if (User.IsInRole("Punekerkuesi"))
+                        {
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Punëkërkuesi Dashboard
@@ -54,12 +58,10 @@
                                     <li class="nav-item">
                                         <a class="dropdown-item" asp-area="Punekerkuesi" asp-controller="#" asp-action="Index">Aplikimet e mia </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="dropdown-item" asp-area="Punekerkuesi" asp-controller="#" asp-action="Index">Edit profili</a>
-                                    </li>
                                 </ul>
                             </li>
-                        </ul>
+                        }
+                    </ul>
                     </div>              
             </div>
             <partial name="_Loginpartial" />
