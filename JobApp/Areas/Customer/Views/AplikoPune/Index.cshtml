@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Apply for a Job";
+}
+
+<h2>Apply for a Job</h2>
+@model JobApplicationViewModel
+<form asp-action="Apply" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Your Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Your Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Resume">Upload Your Resume</label>
+        <input asp-for="Resume" type="file" class="form-control-file" />
+        <span asp-validation-for="Resume" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Application</button>
+</form>
+@if (!string.IsNullOrEmpty(ViewBag.ConfirmationMessage))
+{
+    <div class="alert alert-success">
+        @ViewBag.ConfirmationMessage
+    </div>
+}
