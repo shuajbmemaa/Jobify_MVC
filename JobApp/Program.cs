@@ -18,6 +18,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 var connectionString = builder.Configuration.GetConnectionString("JobAppContextConnection") ?? throw new InvalidOperationException("Connection string 'JobAppContextConnection' not found.");
 
+
 builder.Services.AddDbContext<JobAppContext>(options => options.UseSqlServer(connectionString));
 
 
