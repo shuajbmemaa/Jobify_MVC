@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Jobify.Models
 {
-    public  class JobApplicationViewModel
+    public  class Aplikimi
     {
         [Key]
         public int Id { get; set; }
