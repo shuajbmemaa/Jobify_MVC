@@ -36,9 +36,22 @@
     </style>
 
 <div class="row pb-3">
-    <!-- Search Bar -->
+   
     <form asp-controller="KerkoPune" asp-action="Index" method="get" style="display: flex; align-items: center;">
-        <input type="text" name="searchString" placeholder="Search..." />
+        <input type="text" name="searchString" id="searchInput" placeholder="Search..." oninput="capitalizeEachWord(this)" />
+
+        <script>
+            function capitalizeEachWord(input) {
+              
+                if (input.value.length > 0) {
+                    input.value = input.value.toLowerCase().replace(/\b\w/g, function (char) {
+                        return char.toUpperCase();
+                    });
+                }
+            }
+        </script>
+
+
         <input type="submit" value="Search" />
     </form>
 
