@@ -10,6 +10,7 @@ namespace Jobify.DataAccess.Repository.IRepository
     public interface IPunetRepository: IRepository<Punet>
     {
         void Update(Punet obj);
-        
+
+        IEnumerable<string> GetKategorite();
     }
 }

@@ -18,6 +18,10 @@ namespace Jobify.DataAccess.Repository
             _db = db;
         }
 
+        public IEnumerable<string> GetKategorite()
+        {
+            return _db.Punet.Select(k => k.kategoria).Distinct().ToList();
+        }
 
         public void Update(Punet obj)
         {
