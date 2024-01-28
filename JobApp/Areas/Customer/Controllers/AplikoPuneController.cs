@@ -23,8 +23,8 @@ namespace JobApp.Areas.Customer.Controllers
             {
                 // Process the application (e.g., send email, save to database, etc.)
                 /// Set a confirmation message to be displayed
-                /// 
-                _unitOfWork.Aplikimi.Add(model);
+                
+                _unitOfWork.Aplikimi.Add(model); //Implement this to save in database
                 _unitOfWork.Save();
                 ViewBag.ConfirmationMessage = "Your application has been submitted successfully!";
                 return View("Index");
