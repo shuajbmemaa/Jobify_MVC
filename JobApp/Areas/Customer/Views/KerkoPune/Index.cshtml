@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<Punet>
 
 <div class="row pb-3">
+    <!-- Search Bar -->
+    <form asp-controller="KerkoPune" asp-action="Index" method="get">
+        <input type="text" name="searchString" placeholder="Search..." />
+        <input type="submit" value="Search" />
+    </form>
+
     @foreach (var punet in Model)
     {
         <div class="col-lg-3 col-sm-6">
