@@ -116,8 +116,11 @@ namespace JobApp.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-           
-            public List<string> SelectedRoles { get; set; }
+
+
+            [Required(ErrorMessage = "Please select a role")]
+            [Display(Name = "Selected Role")]
+            public string SelectedRoles { get; set; }
         }
 
 
@@ -145,9 +148,9 @@ namespace JobApp.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
-          
+
                     // Assign roles to user upon registration
-                    var selectedRoles = Input.SelectedRoles; // Retrieve selected roles from data
+                    /*var selectedRoles = Input.SelectedRoles; // Retrieve selected roles from data
                     foreach (var roleName in selectedRoles)
                     {
                         var roleResult = await _userManager.AddToRoleAsync(user, roleName);
@@ -159,6 +162,17 @@ namespace JobApp.Areas.Identity.Pages.Account
                             }
                             return Page();
                         }
+                    }*/
+                    // Assign selected role
+                    var roleName = Input.SelectedRoles;
+                    var roleResult = await _userManager.AddToRoleAsync(user, roleName);
+                    if (!roleResult.Succeeded)
+                    {
+                        foreach (var error in roleResult.Errors)
+                        {
+                            ModelState.AddModelError(string.Empty, error.Description);
+                        }
+                        return Page();
                     }
 
 
