@@ -4,51 +4,71 @@
     form {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     input[type="text"] {
         padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
+        border: none;
+        border-bottom: 1px solid #ccc; 
         font-size: 16px;
         transition: border-color 0.3s ease;
-        width: 250px; /* Adjust as needed */
+        width: 250px; 
+        margin-right: 8px; 
     }
 
         input[type="text"]:focus {
-            border-color: #007bff; /* Change focus color as needed */
+            outline: none; 
+            border-color: #000000;
         }
 
     input[type="submit"] {
-        background-color: #007bff;
+        background-color: #000000;
         color: white;
         border: none;
         border-radius: 4px;
         padding: 8px 16px;
-        margin-left: 8px; /* Adjust spacing as needed */
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
 
         input[type="submit"]:hover {
-            background-color: #0056b3; /* Darker shade of the main color */
+            background-color: #ccc;
         }
-    </style>
+</style>
 
 <div class="row pb-3">
-    <!-- Search Bar -->
+   
     <form asp-controller="KerkoPune" asp-action="Index" method="get" style="display: flex; align-items: center;">
-        <input type="text" name="searchString" placeholder="Search..." />
+        <input type="text" name="searchString" id="searchInput" placeholder="Search..." oninput="capitalizeEachWord(this)" />
+
+        <script>
+            function capitalizeEachWord(input) {
+              
+                if (input.value.length > 0) {
+                    input.value = input.value.toLowerCase().replace(/\b\w/g, function (char) {
+                        return char.toUpperCase();
+                    });
+                }
+            }
+        </script>
+
+
         <input type="submit" value="Search" />
     </form>
 
     @foreach (var punet in Model)
     {
-        <div class="col-lg-3 col-sm-6">
-            <div class="row p-2">
+        <div class="col-lg-4 col-sm-6">
+            <div class="row p-2 text-center">
                 <div class="col-12 p-1">
                     <div class="card border-0 p-3 shadow border-top border-5 rounded">
-                        <img src="/images/@punet.ImageUrl" class="card-img-top rounded" />
+                        <div class="col-12 text-center">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="/images/@punet.ImageUrl" class="card-img-top rounded img-fluid" style="height: 150px; width: 150px;" />
+                            </div>
+                        </div>
+
                         <div class="pl-1">
                             <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@punet.Name</p>
                             <p class="card-title text-warning text-center">Kategoria: <b>@punet.kategoria</b></p>

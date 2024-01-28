@@ -25,22 +25,25 @@
               
                  
                 <div class="checkbox mb-2">
-                    <label asp-for="Input.RememberMe" class="form-label">
+                    <label asp-for="Input.RememberMe" class="form-label text-sm">
                         <input class="form-check-input" asp-for="Input.RememberMe" />
                         @Html.DisplayNameFor(m => m.Input.RememberMe)
                     </label>
-                    <a id="forgot-password" asp-page="./ForgotPassword" style="margin-left: 75px;">Forgot your password?</a>
+                    <a id="forgot-password" asp-page="./ForgotPassword" style="margin-left: 80px; text-decoration: none;" class="small">Forgot your password?</a>
                      
             
                 </div>
                  <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-dark">Log in</button>
+                    
                 </div>
                 <div>
                     <p class="small">
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                        <span style="margin-left: 15px; margin-right: 15px;">or</span>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" style="padding: 10px; text-decoration: none;">Register as a new user</a>
+                     
+
+                        <span>or</span>
+                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation" style="padding: 10px; text-decoration: none;">Resend email confirmation</a>
                     </p>
                 </div>
             </form>
@@ -65,7 +68,7 @@
                         <p>
                             @foreach (var provider in Model.ExternalLogins!)
                             {
-                            <button type="submit" class="w-100  btn-info" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                            <button type="submit" class="w-100 btn btn-outline-info btn-dark" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                             }
                         </p>
                     </div>
