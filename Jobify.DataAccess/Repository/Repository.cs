@@ -12,7 +12,7 @@ namespace Jobify.DataAccess.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-
+        //dependency injection
         private readonly ApplicationDbContext _db;
         internal DbSet<T> dbSet;
 
