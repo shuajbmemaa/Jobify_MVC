@@ -16,10 +16,25 @@ namespace JobApp.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             IEnumerable<Punet> listaPunes = _unitOfWork.Punet.GetAll();
             return View(listaPunes);
+        }*/
+        public IActionResult Index(string searchString)
+        {
+            IEnumerable<Punet> punetList;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                punetList = _unitOfWork.Punet.GetAll().Where(p => p.Name.Contains(searchString));
+            }
+            else
+            {
+                punetList = _unitOfWork.Punet.GetAll();
+            }
+
+            return View(punetList);
         }
 
         public IActionResult Details(int id)
