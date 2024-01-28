@@ -3,11 +3,15 @@
 <div class="row pb-3">
     @foreach (var punet in Model)
     {
-        <div class="col-lg-3 col-sm-6">
+        <div class="col-lg-4 col-sm-6">
             <div class="row p-2">
                 <div class="col-12 p-1">
                     <div class="card border-0 p-3 shadow border-top border-5 rounded">
-                        <img src="/images/@punet.ImageUrl" class="card-img-top rounded" />
+                        <div class="col-12 text-center">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="/images/@punet.ImageUrl" class="card-img-top rounded img-fluid" style="height: 150px; width: 150px;" />
+                            </div>
+                        </div>
                         <div class="pl-1">
                             <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@punet.Name</p>
                             <p class="card-title text-warning text-center">Kategoria: <b>@punet.kategoria</b></p>
