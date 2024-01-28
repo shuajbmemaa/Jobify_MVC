@@ -16,7 +16,7 @@ namespace JobApp.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
         [HttpPost]
-        public IActionResult Apply(JobApplicationViewModel model)
+        public IActionResult Apply(Aplikimi model)
         {
             if (ModelState.IsValid)
             {
