@@ -19,12 +19,19 @@ namespace JobApp.Areas.Customer.Controllers
             _logger = logger;
             _unitOfWork = unitOfWork;
         }
-
+        [Authorize(Roles = "Admin, Punedhenesi")]
         public IActionResult Index()
         {
             IEnumerable<Punet> listaPunes=_unitOfWork.Punet.GetAll();
             return View(listaPunes);
         }
+
+        [Authorize(Roles = "Punekerkuesi")]
+        public IActionResult Index1()
+        {
+            return View();
+        }
+
 
         public IActionResult Details(int id)
         {
