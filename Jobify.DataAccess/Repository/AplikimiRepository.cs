@@ -18,6 +18,11 @@ namespace Jobify.DataAccess.Repository
             _db = db;
         }
 
+        public bool Exists(Expression<Func<Aplikimi, bool>> filter)
+        {
+            return _db.Aplikimet.Any(filter);
+        }
+
         public void Update(Aplikimi aplikimi)
         {
             _db.Aplikimet.Update(aplikimi);
