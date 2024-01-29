@@ -12,5 +12,7 @@ namespace Jobify.DataAccess.Repository.IRepository
         void Update(Punet obj);
 
         IEnumerable<string> GetKategorite();
+
+       // List<Punet> GetPunetByCategory(string k);
     }
 }
