@@ -1,6 +1,7 @@
 ﻿using Jobify.DataAccess.Repository.IRepository;
 using Jobify.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace JobApp.Areas.Customer.Controllers
 {
@@ -21,13 +22,22 @@ namespace JobApp.Areas.Customer.Controllers
             IEnumerable<Punet> listaPunes = _unitOfWork.Punet.GetAll();
             return View(listaPunes);
         }*/
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString,string kategoria)
         {
-            IEnumerable<Punet> punetList;
+            
+            var kategorite = _unitOfWork.Punet.GetKategorite();
+            ViewBag.Categories = new SelectList(kategorite);
+
+            IEnumerable<Punet> punetList = _unitOfWork.Punet.GetAll();
+
+            if (!string.IsNullOrEmpty(kategoria))
+            {
+                punetList = punetList.Where(p => p.kategoria == kategoria);
+            }
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                punetList = _unitOfWork.Punet.GetAll().Where(p => p.Name.Contains(searchString));
+                punetList = punetList.Where(p => p.Name.Contains(searchString));
             }
             else
             {

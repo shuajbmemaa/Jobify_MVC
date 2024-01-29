@@ -41,7 +41,12 @@
    
     <form asp-controller="KerkoPune" asp-action="Index" method="get" style="display: flex; align-items: center;">
         <input type="text" name="searchString" id="searchInput" placeholder="Search..." oninput="capitalizeEachWord(this)" />
-
+        <div class="col-lg-3">
+            <!-- Shfaqeni dropdown-in me kategoritë nga ViewBag.Categories -->
+            <select asp-items="@ViewBag.Categories" name="kategoria" class="form-control">
+                
+            </select>
+        </div>
         <script>
             function capitalizeEachWord(input) {
               
