@@ -17,6 +17,7 @@ namespace JobApp.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
+
         /*public IActionResult Index()
         {
             IEnumerable<Punet> listaPunes = _unitOfWork.Punet.GetAll();
