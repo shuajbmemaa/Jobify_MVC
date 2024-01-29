@@ -28,6 +28,12 @@ namespace Jobify.DataAccess.Repository
             _db.Punet.Update(obj);
         }
 
-       
+       //public List<Punet> GetPunetByCategory(string kategori)
+       // {
+       //     return _db.Punet.Where(j =>j.kategoria == kategori);
+       // }
+
+
+
     }
 }
