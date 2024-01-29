@@ -1,5 +1,6 @@
 ﻿using Jobify.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace JobApp.Areas.Admin.Controllers
 {
@@ -15,7 +16,7 @@ namespace JobApp.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var aplikimet = _context.Aplikantet.ToList();
+            var aplikimet = _context.Aplikimet.ToList();
             return View(aplikimet);
         }
     }

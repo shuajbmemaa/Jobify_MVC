@@ -13,8 +13,7 @@ namespace Jobify.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Aplikimi> Aplikimet { get; set; }
         public DbSet<Punet> Punet { get; set; }
-
-        public DbSet<Aplikimi> Aplikantet { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
