@@ -45,3 +45,9 @@
         @ViewBag.ConfirmationMessage
     </div>
 }
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger  center">
+        @ViewBag.ErrorMessage
+    </div>
+}

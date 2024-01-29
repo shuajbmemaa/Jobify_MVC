@@ -1,0 +1,27 @@
+﻿@model List<Aplikimi>
+
+<div class="container mt-4">
+    <h2>List of Job seekers who Applied for a Job</h2>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Resume</th>
+                <!-- Add more table headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var aplikimi in Model)
+            {
+                <tr>
+                    <td>@aplikimi.Name</td>
+                    <td>@aplikimi.Email</td>
+                    <td>@aplikimi.Resume</td>
+                    <!-- Add more columns if needed -->
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

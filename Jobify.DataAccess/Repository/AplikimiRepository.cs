@@ -4,6 +4,7 @@ using Jobify.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,11 @@ namespace Jobify.DataAccess.Repository
         public AplikimiRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
+        }
+
+        public bool Exists(Expression<Func<Aplikimi, bool>> filter)
+        {
+            return _db.Aplikimet.Any(filter);
         }
 
         public void Update(Aplikimi aplikimi)
