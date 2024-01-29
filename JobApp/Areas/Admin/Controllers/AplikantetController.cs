@@ -15,7 +15,7 @@ namespace JobApp.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            var aplikimet = _context.Aplikimet.ToList();
+            var aplikimet = _context.Aplikantet.ToList();
             return View(aplikimet);
         }
     }
