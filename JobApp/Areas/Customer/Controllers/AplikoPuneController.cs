@@ -2,10 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Jobify.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JobApp.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize(Roles = "Admin, Punekerkuesi")]
     public class AplikoPuneController : Controller
     {
         private readonly ILogger<AplikoPuneController> _logger;
