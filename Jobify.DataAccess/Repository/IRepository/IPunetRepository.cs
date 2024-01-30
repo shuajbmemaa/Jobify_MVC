@@ -13,6 +13,6 @@ namespace Jobify.DataAccess.Repository.IRepository
 
         IEnumerable<string> GetKategorite();
 
-       // List<Punet> GetPunetByCategory(string k);
+        List<Punet> GetPunetByCategory(string kategori);
     }
 }
