@@ -23,6 +23,11 @@ namespace Jobify.DataAccess.Repository
             return _db.Punet.Select(k => k.kategoria).Distinct().ToList();
         }
 
+        public List<Punet> GetPunetByCategory(string kategori)
+        {
+            return _db.Punet.Where(j => j.kategoria == kategori).ToList();
+        }
+
         public void Update(Punet obj)
         {
             _db.Punet.Update(obj);
