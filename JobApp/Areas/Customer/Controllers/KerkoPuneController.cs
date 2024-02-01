@@ -17,6 +17,7 @@ namespace JobApp.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
 
+
         /*public IActionResult Index()
         {
             IEnumerable<Punet> listaPunes = _unitOfWork.Punet.GetAll();
@@ -28,21 +29,22 @@ namespace JobApp.Areas.Customer.Controllers
             var kategorite = _unitOfWork.Punet.GetKategorite();
             ViewBag.Categories = new SelectList(kategorite);
 
-            IEnumerable<Punet> punetList = _unitOfWork.Punet.GetAll();
+            IEnumerable<Punet> punetList;
 
             if (!string.IsNullOrEmpty(kategoria))
             {
-                punetList = punetList.Where(p => p.kategoria == kategoria);
+                punetList = _unitOfWork.Punet.GetPunetByCategory(kategoria);
+            }
+            else
+            {
+                punetList = _unitOfWork.Punet.GetAll();
             }
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 punetList = punetList.Where(p => p.Name.Contains(searchString));
             }
-            else
-            {
-                punetList = _unitOfWork.Punet.GetAll();
-            }
+            
 
             return View(punetList);
         }
