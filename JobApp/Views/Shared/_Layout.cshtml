@@ -48,15 +48,7 @@
 
                                 </ul>
                             </li>
-                        }
-                        
-@*                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index1">JobApp</a>
-                            <li class="nav-item">
-                                <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Index1">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " asp-area="Customer" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li> *@
+                        }            
                         @if (User.IsInRole("Punekerkuesi") || User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
